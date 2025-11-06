@@ -1,2 +1,2 @@
 # ProjetoPi-RedeSocial
-Social Midia for ONG´s
+Social Midia for NGO
