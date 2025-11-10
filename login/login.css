@@ -6,130 +6,136 @@
 }
 
 body {
-  background: #d4cbcb;
-  color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   height: 100vh;
-}
-
-main.container {
+  width: 100vw;
   display: flex;
   justify-content: center;
-  width: 80vw;
-  height: 80vh;
-  border-radius: 15px;
-  overflow: hidden;
-  transition: all 1s ease;
+  align-items: center;
+  background: hsla(294, 81%, 49%, 1);
+
+background: linear-gradient(70deg, hsla(294, 81%, 49%, 1) 8%, hsla(274, 89%, 41%, 1) 81%);
+
+background: -moz-linear-gradient(70deg, hsla(294, 81%, 49%, 1) 8%, hsla(274, 89%, 41%, 1) 81%);
+
+background: -webkit-linear-gradient(70deg, hsla(294, 81%, 49%, 1) 8%, hsla(274, 89%, 41%, 1) 81%);
+
+filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#D018E4", endColorstr="#750CC6", GradientType=1 );
 }
 
-/* Lado do Login */
-.main-side-login {
-  width: 35%;
-  background: #1a1a1a;
+.main-container {
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  width: 360px;
+  padding: 20px 30px 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: 0.4s ease;
+}
+
+.tab-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 25px;
+}
+
+.tab-buttons button {
+  flex: 1;
+  padding: 12px 0;
+  border: none;
+  background: transparent;
+  font-weight: 600;
+  font-size: 16px;
+  color: #999;
+  cursor: pointer;
+  transition: color 0.3s;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  transition: all 1s ease;
+  gap: 6px;
 }
 
-.main-side-login h1 {
-  color: #b05cff;
-  text-align: center;
+.tab-buttons button.active {
+  color: #000;
+  border-bottom: 2px solid #f9a825;
 }
 
-.main-side-login p {
-  text-align: center;
-  margin-bottom: 20px;
-  margin-top: 10px;
+.user-icon {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #f2f2f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25px;
 }
 
-.login-form {
+.user-icon svg {
+  width: 50px;
+  height: 50px;
+  fill: #b3b3b3;
+}
+
+form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  width: 80%;
+  width: 100%;
+  gap: 18px;
+  transition: 0.4s ease;
 }
 
-.login-form label {
-  font-size: 14px;
-  color: #ccc;
-}
-
-.login-form input {
-  padding: 10px;
+form input {
   border: none;
-  border-radius: 5px;
+  border-bottom: 1px solid #ccc;
   outline: none;
-  background: #2a2a2a;
-  color: #fff;
-}
-
-.login-form button {
-  background: linear-gradient(135deg, #b05cff, #6a00ff);
-  border: none;
-  border-radius: 5px;
-  padding: 12px;
-  color: #fff;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s;
-  margin-top: 20px;
-}
-
-.login-form button:hover {
-  background: linear-gradient(135deg, #6a00ff, #b05cff);
-  transform: scale(1.05);
-}
-
-.register-link {
+  padding: 10px;
   font-size: 14px;
-  text-align: center;
+  color: #333;
+  transition: border-color 0.3s;
+  background: transparent;
 }
 
-.register-link a {
-  color: #b05cff;
-  text-decoration: none;
+form input:focus {
+  border-color: #f9a825;
 }
 
-/* Lado da Imagem */
-.main-side-img {
-  width: 50%;
-  background: rgb(190, 181, 181);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  transition: all 1s ease;
-
-}
-
-.side-img-h2 {
-  color: #1a1a1a;
-  text-align: center;
-  background-color: #6a00ff;
-  padding: 12px 30px;
-  border-radius: 5px;
+.submit-btn {
+  margin-top: 20px;
+  padding: 10px 0;
+  background: linear-gradient(90deg, #f9a825, #ffcc00);
+  border: none;
+  border-radius: 25px;
+  color: white;
+  font-weight: 600;
   cursor: pointer;
-  transition: 0.3s;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.side-img-h2:hover {
-  transform: scale(1.05);
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(249,168,37,0.4);
 }
 
-/* Efeito invertido */
-.container.reverse .main-side-login {
-  order: 2;
+.switch-text {
+  margin-top: 12px;
+  font-size: 14px;
+  color: #666;
+  text-align: center;
 }
 
-.container.reverse .main-side-img {
-  order: 1;
+.switch-text span {
+  color: #f9a825;
+  cursor: pointer;
+  font-weight: 500;
 }
 
-/* Transição suave */
-.container.reverse {
-  transform: scale(1.01);
+@media (max-width: 420px) {
+  .main-container {
+    width: 90%;
+    padding: 20px;
+  }
 }

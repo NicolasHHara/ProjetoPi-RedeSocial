@@ -1,43 +1,46 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tela de Login</title>
-  <link rel="stylesheet" href="login.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login / Register</title>
+  <link rel="stylesheet" href="./login.css">
 </head>
 <body>
-  <main class="container">
+  <main>
+    <div class="main-container">
+      <div class="tab-buttons">
+        <button class="active" id="btnSignIn">🔒 Sign in</button>
+        <button id="btnRegister">🧾 Register</button>
+      </div>
 
-    <!-- Lado esquerdo: formulário -->
-    <div class="main-side-login">
-      <h1>Welcome Back!</h1>
-      <p>Make Login to continue</p>
-      <form action="#" method="POST" class="login-form">
-        <label for="nome">User</label>
-        <input type="email" id="nome" name="nome" placeholder="Write your email" required>
+      <div class="user-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z"/>
+        </svg>
+      </div>
 
-        <label for="senha">Password</label>
-        <input type="password" id="senha" name="senha" placeholder="Write your password" required>
-
-        <button type="submit">Enter</button>
-
-        <p class="register-link">Don't have an account?
-          <a href="#">Register.</a>
-        </p>
+      <!-- Sign In form -->
+      <form id="formSignIn">
+        <input type="email" placeholder="Username or e-mail" required>
+        <input type="password" placeholder="Password" required>
+        <button type="submit" class="submit-btn">Sign in</button>
       </form>
-    </div>
 
-    <!-- Lado direito: imagem -->
-    <div class="main-side-img">
-      <img src="" alt="Imagem ilustrativa">
-      <button id="toggleBtn">
-        <h2 class="side-img-h2">Sign-in</h2>
-      </button>
-    </div>
+      <!-- Register form -->
+      <form id="formRegister" style="display:none;">
+        <input type="email" placeholder="Username or e-mail" required>
+        <input type="password" placeholder="Password" required>
+        <input type="password" placeholder="Confirm password" required>
+        <button type="submit" class="submit-btn">Register</button>
+      </form>
 
+      <div class="switch-text">
+        <span id="switchText">Don't have an account? Register</span>
+      </div>
+    </div>
   </main>
 
-  <script src="login.js"></script>
+  <script src="./login.js"></script>
 </body>
 </html>
