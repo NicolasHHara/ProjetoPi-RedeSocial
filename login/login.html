@@ -8,36 +8,41 @@
 </head>
 <body>
   <main>
-    <div class="main-container">
-      <div class="tab-buttons">
-        <button class="active" id="btnSignIn">🔒 Sign in</button>
-        <button id="btnRegister">🧾 Register</button>
+    <div class="main-container-principal">
+      <div class="main-container">
+        <div class="tab-buttons">
+          <button class="active" id="btnSignIn">🔒 Sign in</button>
+          <button id="btnRegister">🧾 Register</button>
+        </div>
+
+        <div class="user-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z"/>
+          </svg>
+        </div>
+
+        <!-- Sign In form -->
+        <form id="formSignIn">
+          <input type="email" placeholder="Username or e-mail" required>
+          <input type="password" placeholder="Password" required>
+          <button type="submit" class="submit-btn">Sign in</button>
+        </form>
+
+        <!-- Register form -->
+        <form id="formRegister" style="display:none;">
+          <input type="email" placeholder="Username or e-mail" required>
+          <input type="password" placeholder="Password" required>
+          <input type="password" placeholder="Confirm password" required>
+          <button type="submit" class="submit-btn">Register</button>
+        </form>
+
+        <div class="switch-text">
+          <span id="switchText">Don't have an account? Register</span>
+        </div>
       </div>
-
-      <div class="user-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-          <path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z"/>
-        </svg>
-      </div>
-
-      <!-- Sign In form -->
-      <form id="formSignIn">
-        <input type="email" placeholder="Username or e-mail" required>
-        <input type="password" placeholder="Password" required>
-        <button type="submit" class="submit-btn">Sign in</button>
-      </form>
-
-      <!-- Register form -->
-      <form id="formRegister" style="display:none;">
-        <input type="email" placeholder="Username or e-mail" required>
-        <input type="password" placeholder="Password" required>
-        <input type="password" placeholder="Confirm password" required>
-        <button type="submit" class="submit-btn">Register</button>
-      </form>
-
-      <div class="switch-text">
-        <span id="switchText">Don't have an account? Register</span>
-      </div>
+    </div>
+    <div class="image-container">
+      <img src="https://www.fecap.br/wp-content/uploads/2023/08/pessoas-de-forca-reuniao-de-sucesso-das-maos-scaled.jpg" alt="login image">
     </div>
   </main>
 
