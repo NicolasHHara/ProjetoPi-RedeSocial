@@ -63,7 +63,7 @@ main {
 }
 
 .tab-buttons {
-  width: 100%;
+  width: 60%;
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid #eee;
@@ -112,7 +112,7 @@ main {
 form {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 60%;
   gap: 18px;
   transition: 0.4s ease;
 }
