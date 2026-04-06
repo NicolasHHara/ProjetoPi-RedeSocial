@@ -1,0 +1,7 @@
+:root {
+    --ngo-green: #2D5A43;
+    --ngo-bg: #E5E7EB;
+}
+body { background-color: var(--ngo-bg); font-family: 'Inter', sans-serif; }
+.bg-ngo-green { background-color: var(--ngo-green); }
+.text-ngo-green { color: var(--ngo-green); }

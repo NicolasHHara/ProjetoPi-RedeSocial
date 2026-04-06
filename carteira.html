@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carteira Digital - ConnectNGO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="./carteira.css">
+</head>
+<body class="min-h-screen">
+
+    <header class="bg-ngo-green text-white p-4 shadow-md">
+        <div class="max-w-5xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <i class="fas fa-seedling text-2xl"></i>
+                <h1 class="text-xl font-bold tracking-tight">ConnectNGO</h1>
+            </div>
+            <nav class="hidden md:flex gap-6 text-sm uppercase font-medium">
+                <a href="#" class="hover:underline">Doe</a>
+                <a href="#" class="hover:underline">Sobre Nós</a>
+                <a href="#" class="hover:underline">Depoimentos</a>
+                <a href="#" class="text-green-300">Créditos</a>
+            </nav>
+            <div class="flex items-center gap-4 text-xl">
+                <i class="far fa-bell cursor-pointer"></i>
+                <div class="w-10 h-10 bg-white text-ngo-green rounded-full flex items-center justify-center font-bold text-sm border-2 border-green-800">
+                    EA
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto mt-8 px-4">
+        
+        <!-- Seção de Saldo -->
+        <section class="bg-white rounded-xl shadow-sm overflow-hidden mb-6">
+            <div class="p-6 border-b border-gray-100 flex justify-between items-center">
+                <div>
+                    <h2 class="text-gray-500 text-sm uppercase font-semibold">Saldo Disponível</h2>
+                    <p class="text-3xl font-bold text-gray-800 mt-1">R$ 1.000.000,00</p>
+                </div>
+                <div class="flex gap-3">
+                    <button class="bg-gray-100 text-gray-700 px-6 py-2 rounded-lg font-semibold hover:bg-gray-200 transition">Extrato</button>
+                    <button class="bg-ngo-green text-white px-6 py-2 rounded-lg font-semibold hover:opacity-90 transition"> <i class="fas fa-plus mr-2"></i> Adquirir Créditos</button>
+                </div>
+            </div>
+        </section>
+
+         <!--SEÇÃO DE ATIVIDADES RECENTES-->
+        <section class="bg-white rounded-xl shadow-sm p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-lg font-bold text-gray-800">Atividades Recentes</h3>
+                <a href="#" class="text-ngo-green text-sm font-semibold hover:underline">Ver tudo</a>
+            </div>
+
+            <div class="space-y-4">
+                <!-- Item 1 -->
+                <div class="flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg transition border-b border-gray-50">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center text-gray-500">
+                            <i class="fas fa-shopping-bag"></i>
+                        </div>
+                        <div>
+                            <p class="font-bold text-gray-800">Companhia Zaffari</p>
+                            <p class="text-xs text-gray-400">Pagamento com Pix • 10:25</p>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <p class="font-bold text-red-600">- R$ 4,85</p>
+                        <p class="text-[10px] text-ngo-green uppercase font-bold">Saldo em conta</p>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg transition border-b border-gray-50">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center text-gray-500">
+                            <i class="fas fa-car"></i>
+                        </div>
+                        <div>
+                            <p class="font-bold text-gray-800">99 Tecnologia Ltda</p>
+                            <p class="text-xs text-gray-400">Pagamento com Pix • Ontem</p>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <p class="font-bold text-red-600">- R$ 30,00</p>
+                        <p class="text-[10px] text-ngo-green uppercase font-bold">Saldo em conta</p>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg transition">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-green-100 text-ngo-green rounded-full flex items-center justify-center">
+                            <i class="fas fa-hand-holding-heart"></i>
+                        </div>
+                        <div>
+                            <p class="font-bold text-gray-800">Doação Recebida</p>
+                            <p class="text-xs text-gray-400">Transferência Externa • 04/Abr</p>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <p class="font-bold text-green-600">+ R$ 500,00</p>
+                        <p class="text-[10px] text-ngo-green uppercase font-bold">Crédito Social</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>
