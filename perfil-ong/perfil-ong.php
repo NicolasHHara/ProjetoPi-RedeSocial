@@ -23,7 +23,7 @@
             <?php
                 //FAZER UM VERIFICADO PARA ONGS, COLOCAR TIPO UM CORRETO DO LADO, SEMELHANTE AO INSTAGRAM
             ?>
-        </div>
+        </div> s
         
         <div class="div2">
             <button>
