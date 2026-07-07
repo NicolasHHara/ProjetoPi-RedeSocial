@@ -1,12 +1,818 @@
-:root{
-  font-family: Arial, Helvetica, sans-serif;
+
+:root {
+  --color-forest: #1f3a2e;
+  --color-forest-dark: #142720;
+  --color-blush: #f3d9d5;
+  --color-blush-dark: #e7c0ba;
+  --color-paper: #fbf6ef;
+  --color-paper-dark: #f1e9db;
+  --color-marigold: #e8863a;
+  --color-marigold-dark: #c96c24;
+  --color-ink: #22201d;
+  --color-ink-soft: #55504a;
+  --color-white: #ffffff;
+
+  --font-display: 'Fraunces', 'Iowan Old Style', 'Georgia', serif;
+  --font-body: 'Work Sans', 'Segoe UI', system-ui, sans-serif;
+
+  --space-1: 0.5rem;
+  --space-2: 0.75rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2rem;
+  --space-6: 3rem;
+  --space-7: 4.5rem;
+
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 28px;
+
+  --shadow-card: 0 12px 32px -18px rgba(20, 39, 32, 0.35);
+  --transition-fast: 160ms ease;
+  --transition-base: 280ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-forest);
+  color: var(--color-white);
+  font-family: var(--font-body);
+}
+
+/* Botões de ícone (menu, busca, créditos) — todos os <button> filhos diretos do header */
+.header > button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  transition: background var(--transition-fast);
+  order: 2;
+}
+
+/* O primeiro botão (menu) fica antes do título */
+.header > button:first-of-type {
+  order: 1;
+}
+
+.header > button:hover,
+.header > button:focus-visible {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.header > button img {
+  width: 20px;
+  height: 20px;
+  /* Se os SVGs vierem desenhados em preto (como ícones outline padrão),
+     este filtro os converte para branco sobre o fundo verde-mata.
+     Remova o filtro se os arquivos já forem exportados em branco. */
+  filter: brightness(0) invert(1);
+}
+
+.header_title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-white);
+  margin: 0;
+  white-space: nowrap;
+  order: 2;
+}
+
+/* Navegação central */
+.header nav {
+  order: 3;
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: center;
+  min-width: 0;
+}
+
+.header ul {
+  display: flex;
+  gap: var(--space-4);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.header ul li {
+  display: flex;
+}
+
+.header ul button {
+  background: none;
+  border: none;
+  padding: var(--space-1) 0;
+  color: inherit;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  position: relative;
+  white-space: nowrap;
+}
+
+.header ul button::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: -2px;
+  height: 2px;
+  background: var(--color-marigold);
+  transition: right var(--transition-fast);
+}
+
+.header ul button:hover::after,
+.header ul button:focus-visible::after {
+  right: 0;
+}
+
+.header a:focus-visible,
+.header button:focus-visible {
+  outline: 3px solid var(--color-marigold);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+@media (max-width: 720px) {
+  .header nav {
+    order: 3;
+    flex-basis: 100%;
+    justify-content: flex-start;
+    margin-top: var(--space-1);
+  }
+
+  .header ul {
+    width: 100%;
+    overflow-x: auto;
+    gap: var(--space-3);
+    padding-bottom: 2px;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+@media (max-width: 400px) {
+  .header_title {
+    font-size: 1.05rem;
+  }
+
+  .header ul button {
+    font-size: 0.82rem;
+  }
 }
 
 
 
-.footer{
-  background-color: green;
+
+
+.footer {
+  background: var(--color-forest-dark);
+  color: rgba(255, 255, 255, 0.82);
+  font-family: var(--font-body);
+}
+
+.footer_content {
+  max-width: 1280px;
+  margin-inline: auto;
+  padding: var(--space-7) var(--space-4) var(--space-5);
+  display: grid;
+  grid-template-columns: 1.4fr repeat(3, 1fr);
+  gap: var(--space-5);
+}
+
+/* --- Marca --- */
+
+.footer_brand-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+.footer_logo {
+  width: 28px;
+  height: 28px;
+  filter: brightness(0) invert(1);
+}
+
+.footer_brand-name {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--color-white);
+}
+
+.footer_tagline {
+  max-width: 32ch;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* --- Títulos das colunas --- */
+
+.footer_heading {
+  color: var(--color-white);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  margin: 0 0 var(--space-3);
+}
+
+/* --- Navegação e contato --- */
+
+.footer_nav ul,
+.footer_contact ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.footer_nav button {
+  background: none;
+  border: none;
+  padding: 0;
+  color: inherit;
+  font-size: 0.92rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+.footer_contact a {
+  font-size: 0.92rem;
+}
+
+.footer_nav button:hover,
+.footer_nav button:focus-visible,
+.footer_contact a:hover,
+.footer_contact a:focus-visible {
+  color: var(--color-marigold);
+}
+
+/* --- Redes sociais --- */
+
+.footer_social-icons {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.footer_social-icons a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+.footer_social-icons a:hover,
+.footer_social-icons a:focus-visible {
+  background: var(--color-marigold);
+  transform: translateY(-2px);
+}
+
+.footer_social-icons img {
+  width: 16px;
+  height: 16px;
+  filter: brightness(0) invert(1);
+}
+
+/* --- Rodapé inferior --- */
+
+.footer_bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  max-width: 1280px;
+  margin-inline: auto;
+  padding: var(--space-4);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  font-size: 0.82rem;
+}
+
+.footer_legal {
+  display: flex;
+  gap: var(--space-4);
+}
+
+.footer_legal a:hover,
+.footer_legal a:focus-visible {
+  color: var(--color-marigold);
+}
+
+.footer a:focus-visible,
+.footer button:focus-visible {
+  outline: 3px solid var(--color-marigold);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* =========================================================================
+   Responsivo
+   ========================================================================= */
+
+@media (max-width: 860px) {
+  .footer_content {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .footer_content {
+    grid-template-columns: 1fr;
+  }
+
+  .footer_bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+
+
+.nav {
+  position: relative;
+  min-height: clamp(420px, 70vh, 640px);
+  display: flex;
+  align-items: flex-end;
+  padding: var(--space-6) var(--space-4);
+  color: var(--color-white);
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(232, 134, 58, 0.35), transparent 45%),
+    linear-gradient(135deg, #2f4f3d 0%, #1f3a2e 55%, #14261d 100%);
+  background-size: cover;
+  background-position: center;
+}
+
+/* Quando tiver a foto real da feira, troque por:
+   background-image: url('/images/hero-feira.jpg');
+   background-size: cover;
+   background-position: center;
+   ...e mantenha o .nav_overlay abaixo para garantir contraste do texto. */
+
+.nav_overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(20, 39, 32, 0.15) 0%, rgba(20, 39, 32, 0.78) 100%);
+  pointer-events: none;
+}
+
+.nav_content {
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.nav_title {
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  line-height: 1.12;
+  color: var(--color-white);
+  max-width: 18ch;
+  margin: 0;
+}
+
+.nav_subtitle {
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 46ch;
+  margin: 0;
+}
+
+.nav_cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  width: fit-content;
+  margin-top: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  border: none;
+  border-radius: var(--radius-sm);
+  background: var(--color-marigold);
+  color: var(--color-white);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  /* Contorno tracejado = o "carimbo" de autenticidade da marca, mesmo
+     tratamento usado no CTA final da página. */
+  outline: 2px dashed rgba(255, 255, 255, 0.5);
+  outline-offset: 4px;
+  box-shadow: 0 10px 24px -10px rgba(201, 108, 36, 0.55);
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+.nav_cta:hover {
+  background: var(--color-marigold-dark);
+  transform: translateY(-2px);
+}
+
+.nav_cta:focus-visible {
+  outline: 3px solid var(--color-white);
+  outline-offset: 4px;
+}
+
+.nav_cta-icon {
+  width: 18px;
+  height: 18px;
+  filter: brightness(0) invert(1);
+}
+
+/* =========================================================================
+   Responsivo
+   ========================================================================= */
+
+@media (max-width: 640px) {
+  .nav {
+    min-height: 380px;
+    padding: var(--space-5) var(--space-3);
+  }
+
+  .nav_title {
+    font-size: 1.6rem;
+  }
+
+  .nav_subtitle {
+    font-size: 0.95rem;
+  }
+}
+
+@media (min-width: 1800px) {
+  .nav_content {
+    max-width: 760px;
+  }
+
+  .nav_title {
+    font-size: 3.4rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav_cta {
+    transition: none;
+  }
+}
+
+
+
+.highlights {
+  padding: var(--space-7) var(--space-4);
+  background: var(--color-blush);
+}
+
+.highlights_title {
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+  color: var(--color-forest-dark);
+  margin: 0 0 var(--space-6);
+  position: relative;
+}
+
+.highlights_title span {
+  position: relative;
+  z-index: 1;
+  padding: 0 var(--space-3);
+  background: var(--color-blush);
+}
+
+.highlights_title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: var(--color-ink-soft);
+  opacity: 0.25;
+}
+
+.highlights_carousel {
+  max-width: 1280px;
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* A "janela" que recorta o track — o efeito de slide vem do transform
+   aplicado inline no componente (translateX baseado no slide atual). */
+.highlights_viewport {
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+}
+
+.highlights_track {
+  display: flex;
+  transition: transform var(--transition-base);
+}
+
+.highlights_card {
+  flex: 0 0 100%;
+  min-width: 0;
+  background: var(--color-paper);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6) var(--space-5);
+  min-height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: var(--shadow-card);
+}
+
+.highlights_card p {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--color-ink);
+  max-width: 52ch;
+}
+
+.highlights_arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border: none;
+  border-radius: 999px;
+  background: var(--color-forest);
+  color: var(--color-white);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+.highlights_arrow:hover {
+  background: var(--color-forest-dark);
+  transform: scale(1.06);
+}
+
+.highlights_arrow:focus-visible {
+  outline: 3px solid var(--color-marigold);
+  outline-offset: 2px;
+}
+
+.highlights_dots {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-1);
+  margin-top: var(--space-4);
+}
+
+.highlights_dot {
+  width: 9px;
+  height: 9px;
+  padding: 0;
+  border: none;
+  border-radius: 999px;
+  background: var(--color-blush-dark);
+  cursor: pointer;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+.highlights_dot-active {
+  background: var(--color-forest);
+  transform: scale(1.25);
+}
+
+.highlights_dot:focus-visible {
+  outline: 3px solid var(--color-marigold);
+  outline-offset: 2px;
+}
+
+.highlights_visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* =========================================================================
+   Responsivo
+   ========================================================================= */
+
+@media (max-width: 640px) {
+  .highlights_carousel {
+    grid-template-columns: 1fr;
+  }
+
+  .highlights_arrow {
+    display: none;
+  }
+
+  .highlights_card {
+    padding: var(--space-5) var(--space-4);
+    min-height: 160px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .highlights_track {
+    transition: none;
+  }
+}
+
+
+
+
+.benefits {
+  padding: var(--space-7) var(--space-4);
+  max-width: 1280px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.benefits_title {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+  color: var(--color-forest-dark);
+  margin: 0 0 var(--space-6);
+  position: relative;
+}
+
+.benefits_title span {
+  position: relative;
+  z-index: 1;
+  padding: 0 var(--space-3);
+  background: var(--color-paper);
+}
+
+.benefits_title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: var(--color-ink-soft);
+  opacity: 0.25;
+}
+
+.benefits_cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-4);
+  margin-bottom: var(--space-7);
+}
+
+/* --- Flip card --- */
+
+.benefits_card {
+  perspective: 1200px;
+  height: 220px;
   width: 100%;
-  height: 20vh;
-  margin-bottom: 0;
+  border: none;
+  background: none;
+  padding: 0;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  text-align: left;
+}
+
+.benefits_card:focus-visible {
+  outline: 3px solid var(--color-marigold);
+  outline-offset: 4px;
+  border-radius: var(--radius-md);
+}
+
+.benefits_card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform var(--transition-base);
+  transform-style: preserve-3d;
+}
+
+.benefits_card-inner-flipped {
+  transform: rotateY(180deg);
+}
+
+/* Preview no hover/foco para quem ainda não clicou */
+.benefits_card:hover .benefits_card-inner,
+.benefits_card:focus-visible .benefits_card-inner {
+  transform: rotateY(180deg);
+}
+
+.benefits_card-face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-5);
+  border-radius: var(--radius-md);
+  backface-visibility: hidden;
+  box-shadow: var(--shadow-card);
+  text-align: center;
+}
+
+.benefits_card-face p {
+  margin: 0;
+}
+
+.benefits_card-front {
+  background: var(--color-paper-dark);
+  color: var(--color-forest-dark);
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+}
+
+.benefits_card-back {
+  background: var(--color-forest);
+  color: var(--color-white);
+  transform: rotateY(180deg);
+  font-size: 0.98rem;
+}
+
+/* --- CTA de fechamento --- */
+/* Este é o botão que "fecha a venda": maior, mais peso visual e o
+   mesmo selo tracejado usado no hero, reforçando que é a mesma ação
+   (comprar créditos), só que no fim do funil. */
+
+.benefits_cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-3) var(--space-6);
+  border: none;
+  border-radius: var(--radius-sm);
+  background: var(--color-marigold);
+  color: var(--color-white);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  outline: 2px dashed rgba(255, 255, 255, 0.5);
+  outline-offset: 4px;
+  box-shadow: 0 14px 30px -12px rgba(201, 108, 36, 0.6);
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+.benefits_cta:hover {
+  background: var(--color-marigold-dark);
+  transform: translateY(-2px);
+}
+
+.benefits_cta:focus-visible {
+  outline: 3px solid var(--color-forest);
+  outline-offset: 4px;
+}
+
+/* =========================================================================
+   Responsivo
+   ========================================================================= */
+
+@media (max-width: 480px) {
+  .benefits_card {
+    height: 200px;
+  }
+
+  .benefits_cta {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .benefits_card-inner,
+  .benefits_cta {
+    transition: none;
+  }
 }
